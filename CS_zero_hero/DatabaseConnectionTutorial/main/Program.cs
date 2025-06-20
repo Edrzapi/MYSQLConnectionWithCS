@@ -13,9 +13,9 @@ namespace DatabaseConnectionTutorial
             // 1) create the builder (has DI, logging, config, etc.)
             var builder = Host.CreateApplicationBuilder(args);
 
-            // 2) register your services
+            // 2) register services
             builder.Services
-                // your connection‐factory
+                // set up the connection‐factory
                 .AddSingleton<IConnectionFactory>(_ => new DatabaseConfig("tutorial"))
                 // open‐generic CRUD impl
                 .AddTransient(typeof(IService<>), typeof(GenericCrudService<>))
